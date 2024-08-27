@@ -16,7 +16,7 @@
 
 #include "SensorNotifierUtils.h"
 
-static const std::string kTouchDevice = "/dev/mi_display/disp_feature";
+static const std::string kTouchDevice = "/dev/xiaomi-touch";
 
 using android::hardware::Return;
 using android::hardware::Void;
