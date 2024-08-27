@@ -106,6 +106,7 @@ TARGET_KERNEL_CONFIG := \
     vendor/waipio_GKI.config \
     vendor/xiaomi_GKI.config \
     vendor/$(PRODUCT_DEVICE)_GKI.config \
+    vendor/pixelos.config \
     vendor/debugfs.config
 
 BOARD_BOOT_HEADER_VERSION := 4
