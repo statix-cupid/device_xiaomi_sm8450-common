@@ -316,6 +316,9 @@ PRODUCT_PACKAGES += \
     libsfplugin_ccodec_utils.vendor
 
 PRODUCT_PACKAGES += \
+    dolbycodec_shim
+
+PRODUCT_PACKAGES += \
     init.qti.media.rc \
     init.qti.media.sh
 
