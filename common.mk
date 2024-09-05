@@ -396,7 +396,7 @@ PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
 # Power
 PRODUCT_PACKAGES += \
-    android.hardware.power-service.lineage-libperfmgr \
+    android.hardware.power-service.statix-libperfmgr \
     libqti-perfd-client
 
 PRODUCT_COPY_FILES += \
@@ -404,7 +404,7 @@ PRODUCT_COPY_FILES += \
 
 # PowerShare
 PRODUCT_PACKAGES += \
-    vendor.lineage.powershare@1.0-service.xiaomi
+    vendor.lineage.powershare-service.xiaomi
 
 # Protobuf
 PRODUCT_PACKAGES += \
@@ -449,7 +449,7 @@ PRODUCT_PACKAGES += \
 
 # Sensors
 PRODUCT_PACKAGES += \
-    android.hardware.sensors@2.1-service.xiaomi-multihal \
+    android.hardware.sensors-service.xiaomi-multihal \
     android.frameworks.sensorservice@1.0.vendor:64
 
 PRODUCT_PACKAGES += \
@@ -477,9 +477,9 @@ PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH) \
     hardware/google/interfaces \
     hardware/google/pixel \
-    hardware/lineage/interfaces/power-libperfmgr \
+    hardware/statix/interfaces/power-libperfmgr \
     hardware/qcom-caf/common/libqti-perfd-client \
-    hardware/xiaomi
+    vendor/hardware/xiaomi
 
 # Telephony
 PRODUCT_PACKAGES += \
@@ -585,11 +585,7 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.verified_boot.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.verified_boot.xml
 
 # Vibrator
-PRODUCT_PACKAGES += \
-    vendor.qti.hardware.vibrator.service
-
-PRODUCT_COPY_FILES += \
-    vendor/qcom/opensource/vibrator/excluded-input-devices.xml:$(TARGET_COPY_OUT_VENDOR)/etc/excluded-input-devices.xml
+$(call inherit-product, vendor/hardware/xiaomi/aidl/vibrator/vibrator_product.mk)
 
 # WiFi
 PRODUCT_PACKAGES += \
