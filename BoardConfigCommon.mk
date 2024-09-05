@@ -112,7 +112,8 @@ BOARD_KERNEL_CMDLINE := \
     video=vfb:640x400,bpp=32,memsize=3072000 \
     disable_dma32=on \
     mtdoops.fingerprint=$(STATIX_VERSION) \
-    swinfo.fingerprint=$(STATIX_VERSION)
+    swinfo.fingerprint=$(STATIX_VERSION) \
+    allow_file_spec_access \
     
 BOARD_BOOTCONFIG := \
     androidboot.hardware=qcom \
