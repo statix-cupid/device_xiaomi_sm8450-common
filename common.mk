@@ -193,12 +193,12 @@ PRODUCT_COPY_FILES += \
 
 # Fstab
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/etc/charger_fw_fstab.qti:$(TARGET_COPY_OUT_VENDOR)/etc/charger_fw_fstab.qti
+    $(LOCAL_PATH)/rootdir/etc/fstab/charger_fw_fstab.qti:$(TARGET_COPY_OUT_VENDOR)/etc/charger_fw_fstab.qti
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/etc/fstab.qcom:$(TARGET_COPY_OUT_VENDOR)/etc/fstab.qcom \
-    $(LOCAL_PATH)/rootdir/etc/fstab.qcom:$(TARGET_COPY_OUT_RECOVERY)/root/first_stage_ramdisk/fstab.qcom \
-    $(LOCAL_PATH)/rootdir/etc/fstab.qcom:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.qcom
+    $(LOCAL_PATH)/rootdir/etc/fstab/fstab.qcom:$(TARGET_COPY_OUT_VENDOR)/etc/fstab.qcom \
+    $(LOCAL_PATH)/rootdir/etc/fstab/fstab.qcom:$(TARGET_COPY_OUT_RECOVERY)/root/first_stage_ramdisk/fstab.qcom \
+    $(LOCAL_PATH)/rootdir/etc/fstab/fstab.qcom:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.qcom
 
 # Gatekeeper
 PRODUCT_PACKAGES += \
@@ -433,7 +433,7 @@ PRODUCT_PACKAGES += \
     fastbootd
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/etc/init.recovery.qcom.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.qcom.rc
+    $(LOCAL_PATH)/rootdir/etc/recovery/init.recovery.qcom.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.qcom.rc
 
 # RenderScript
 PRODUCT_PACKAGES += \
@@ -520,8 +520,8 @@ PRODUCT_COPY_FILES += \
 
 # Ueventd
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/etc/ueventd.qcom.rc:$(TARGET_COPY_OUT_VENDOR)/etc/ueventd.rc \
-    $(LOCAL_PATH)/rootdir/etc/ueventd-odm.rc:$(TARGET_COPY_OUT_ODM)/etc/ueventd.rc
+    $(LOCAL_PATH)/rootdir/etc/qcom/ueventd.qcom.rc:$(TARGET_COPY_OUT_VENDOR)/etc/ueventd.rc \
+    $(LOCAL_PATH)/rootdir/etc/xiaomi/ueventd-odm.rc:$(TARGET_COPY_OUT_ODM)/etc/ueventd.rc
 
 # Update engine
 PRODUCT_PACKAGES += \
@@ -558,27 +558,32 @@ PRODUCT_PACKAGES += \
 
 # Vendor init
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/etc/init.qcom.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.qcom.rc \
-    $(LOCAL_PATH)/rootdir/etc/init.qti.kernel.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.qti.kernel.rc \
-    $(LOCAL_PATH)/rootdir/etc/init.target.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.target.rc \
-    $(LOCAL_PATH)/rootdir/etc/init.touch_report.rc:$(TARGET_COPY_OUT_RECOVERY)/root/vendor/etc/init/init.touch_report.rc \
-    $(LOCAL_PATH)/rootdir/etc/init.touch_report.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.touch_report.rc \
-    $(LOCAL_PATH)/rootdir/etc/init.xiaomi_sm8450.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.xiaomi_sm8450.rc
+    $(LOCAL_PATH)/rootdir/etc/qcom/init.qcom.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.qcom.rc \
+    $(LOCAL_PATH)/rootdir/etc/qcom/init.qti.kernel.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.qti.kernel.rc \
+    $(LOCAL_PATH)/rootdir/etc/qcom/init.target.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.target.rc
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/bin/init.class_main.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.class_main.sh \
-    $(LOCAL_PATH)/rootdir/bin/init.kernel.post_boot-cape.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.kernel.post_boot-cape.sh \
-    $(LOCAL_PATH)/rootdir/bin/init.kernel.post_boot-diwali.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.kernel.post_boot-diwali.sh \
-    $(LOCAL_PATH)/rootdir/bin/init.kernel.post_boot-taro.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.kernel.post_boot-taro.sh \
-    $(LOCAL_PATH)/rootdir/bin/init.kernel.post_boot.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.kernel.post_boot.sh \
-    $(LOCAL_PATH)/rootdir/bin/init.qcom.class_core.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.qcom.class_core.sh \
-    $(LOCAL_PATH)/rootdir/bin/init.qcom.early_boot.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.qcom.early_boot.sh \
-    $(LOCAL_PATH)/rootdir/bin/init.qcom.post_boot.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.qcom.post_boot.sh \
-    $(LOCAL_PATH)/rootdir/bin/init.qcom.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.qcom.sh \
-    $(LOCAL_PATH)/rootdir/bin/init.qti.kernel.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.qti.kernel.sh \
-    $(LOCAL_PATH)/rootdir/bin/init.qti.write.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.qti.write.sh \
-    $(LOCAL_PATH)/rootdir/bin/vendor_modprobe.sh:$(TARGET_COPY_OUT_VENDOR)/bin/vendor_modprobe.sh \
-    $(LOCAL_PATH)/rootdir/bin/init.xiaomi_sm8450.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.xiaomi_sm8450.sh
+    $(LOCAL_PATH)/rootdir/etc/xiaomi/touch/init.touch_report.rc:$(TARGET_COPY_OUT_RECOVERY)/root/vendor/etc/init/init.touch_report.rc \
+    $(LOCAL_PATH)/rootdir/etc/xiaomi/touch/init.touch_report.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.touch_report.rc \
+    $(LOCAL_PATH)/rootdir/etc/xiaomi/perf/init.xiaomi_sm8450_perf.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.xiaomi_sm8450.rc \
+    $(LOCAL_PATH)/rootdir/etc/xiaomi/init.xiaomi_sm8450.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.xiaomi_sm8450.rc
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/rootdir/bin/qcom/init.class_main.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.class_main.sh \
+    $(LOCAL_PATH)/rootdir/bin/qcom/init.kernel.post_boot-cape.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.kernel.post_boot-cape.sh \
+    $(LOCAL_PATH)/rootdir/bin/qcom/init.kernel.post_boot-diwali.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.kernel.post_boot-diwali.sh \
+    $(LOCAL_PATH)/rootdir/bin/qcom/init.kernel.post_boot-taro.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.kernel.post_boot-taro.sh \
+    $(LOCAL_PATH)/rootdir/bin/qcom/init.kernel.post_boot.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.kernel.post_boot.sh \
+    $(LOCAL_PATH)/rootdir/bin/qcom/init.qcom.class_core.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.qcom.class_core.sh \
+    $(LOCAL_PATH)/rootdir/bin/qcom/init.qcom.early_boot.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.qcom.early_boot.sh \
+    $(LOCAL_PATH)/rootdir/bin/qcom/init.qcom.post_boot.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.qcom.post_boot.sh \
+    $(LOCAL_PATH)/rootdir/bin/qcom/init.qcom.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.qcom.sh \
+    $(LOCAL_PATH)/rootdir/bin/qcom/init.qti.kernel.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.qti.kernel.sh \
+    $(LOCAL_PATH)/rootdir/bin/qcom/init.qti.write.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.qti.write.sh \
+    $(LOCAL_PATH)/rootdir/bin/qcom/vendor_modprobe.sh:$(TARGET_COPY_OUT_VENDOR)/bin/vendor_modprobe.sh
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/rootdir/bin/perf/init.xiaomi_sm8450_perf.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.xiaomi_sm8450.sh
 
 # Verified boot
 PRODUCT_COPY_FILES += \
