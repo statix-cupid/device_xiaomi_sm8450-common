@@ -114,6 +114,7 @@ BOARD_KERNEL_CMDLINE := \
     mtdoops.fingerprint=$(STATIX_VERSION) \
     swinfo.fingerprint=$(STATIX_VERSION) \
     allow_file_spec_access \
+    irqaffinity=0-3
     
 BOARD_BOOTCONFIG := \
     androidboot.hardware=qcom \
