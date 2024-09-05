@@ -389,7 +389,7 @@ PRODUCT_COPY_FILES += \
 
 # PowerShare
 PRODUCT_PACKAGES += \
-    vendor.lineage.powershare@1.0-service.xiaomi
+    vendor.lineage.powershare-service.xiaomi
 
 # Protobuf
 PRODUCT_PACKAGES += \
