@@ -105,7 +105,8 @@ BOARD_MKBOOTIMG_ARGS := --header_version $(BOARD_BOOT_HEADER_VERSION)
 BOARD_KERNEL_CMDLINE := \
     video=vfb:640x400,bpp=32,memsize=3072000 \
     disable_dma32=on \
-    mtdoops.fingerprint=$(LINEAGE_VERSION)
+    mtdoops.fingerprint=$(STATIX_VERSION) \
+    swinfo.fingerprint=$(STATIX_VERSION)
     
 BOARD_BOOTCONFIG := \
     androidboot.hardware=qcom \
@@ -188,8 +189,9 @@ VENDOR_SECURITY_PATCH := 2024-08-01
 
 # Sepolicy
 include device/qcom/sepolicy_vndr/SEPolicy.mk
-include device/lineage/sepolicy/libperfmgr/sepolicy.mk
+include device/statix/sepolicy/libperfmgr/sepolicy.mk
 include device/xiaomi/sepolicy/SEPolicy.mk
+
 SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/private
 SYSTEM_EXT_PUBLIC_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/public
 BOARD_VENDOR_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/vendor
