@@ -7,6 +7,6 @@ prebuilt_etc {
 
 sh_binary {
     name: "init.qti.media.sh",
-    src: "etc/init.qti.media.sh",
+    src: "bin/init.qti.media.sh",
     vendor: true,
 }

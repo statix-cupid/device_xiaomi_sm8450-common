@@ -13,6 +13,6 @@ cc_library {
     ],
     header_libs: [
         "qti_kernel_headers",
-        "//hardware/xiaomi:xiaomifingerprint_headers",
+        "//vendor/hardware/xiaomi:xiaomifingerprint_headers",
     ],
 }
