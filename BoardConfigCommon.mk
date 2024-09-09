@@ -82,7 +82,7 @@ SOONG_CONFIG_dolby_vision_enabled := true
 # DTB/O
 BOARD_INCLUDE_DTB_IN_BOOTIMG := true
 BOARD_PREBUILT_DTBIMAGE_DIR := $(TARGET_KERNEL_DIR)
-BOARD_PREBUILT_DTBOIMAGE := $(BOARD_PREBUILT_DTBIMAGE_DIR)/dtbs/dtbo.img
+BOARD_PREBUILT_DTBOIMAGE := $(BOARD_PREBUILT_DTBIMAGE_DIR)/dtbo.img
 
 # Filesystem
 TARGET_FS_CONFIG_GEN := $(COMMON_PATH)/configs/filesystem/config.fs
@@ -93,9 +93,6 @@ BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := default
 $(call soong_config_set, qtilocation, feature_nhz, false)
 
 # Kernel
-TARGET_NO_KERNEL_OVERRIDE := true
-TARGET_NO_KERNEL := false
-
 BOARD_USES_GENERIC_KERNEL_IMAGE := true
 TARGET_HAS_GENERIC_KERNEL_HEADERS := true
 
@@ -116,7 +113,7 @@ BOARD_KERNEL_CMDLINE := \
     allow_file_spec_access \
     irqaffinity=0-3 \
     pelt=8
-    
+
 BOARD_BOOTCONFIG := \
     androidboot.hardware=qcom \
     androidboot.init_fatal_reboot_target=recovery \
@@ -127,26 +124,41 @@ BOARD_BOOTCONFIG := \
 BOARD_BUILD_VENDOR_RAMDISK_IMAGE := true
 
 KERNEL_MODULE_DIR := $(TARGET_KERNEL_DIR)
-KERNEL_MODULES := $(wildcard $(KERNEL_MODULE_DIR)/vendor_dlkm/*.ko) \
-                  $(wildcard $(KERNEL_MODULE_DIR)/vendor_ramdisk/*.ko)
+KERNEL_MODULES := $(wildcard $(KERNEL_MODULE_DIR)/*.ko)
+#KERNEL_MODULES := $(wildcard $(KERNEL_MODULE_DIR)/vendor_dlkm/*.ko) \
+#                  $(wildcard $(KERNEL_MODULE_DIR)/vendor_ramdisk/*.ko)
 
 # Blocklist
-BOARD_VENDOR_KERNEL_MODULES_BLOCKLIST_FILE := $(KERNEL_MODULE_DIR)/vendor_dlkm/modules.blocklist
-BOARD_VENDOR_RAMDISK_KERNEL_MODULES_BLOCKLIST_FILE := $(KERNEL_MODULE_DIR)/vendor_ramdisk/modules.blocklist
+#BOARD_VENDOR_KERNEL_MODULES_BLOCKLIST_FILE := $(KERNEL_MODULE_DIR)/vendor_dlkm/modules.blocklist
+#BOARD_VENDOR_RAMDISK_KERNEL_MODULES_BLOCKLIST_FILE := $(KERNEL_MODULE_DIR)/vendor_ramdisk/modules.blocklist
+BOARD_VENDOR_KERNEL_MODULES_BLOCKLIST_FILE := $(KERNEL_MODULE_DIR)/modules.blocklist
 
 # Module load list
-BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD := $(strip $(shell cat $(KERNEL_MODULE_DIR)/vendor_ramdisk/modules.load))
-BOARD_VENDOR_KERNEL_MODULES_LOAD := $(strip $(shell cat $(KERNEL_MODULE_DIR)/vendor_dlkm/modules.load))
+#BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD := $(strip $(shell cat $(KERNEL_MODULE_DIR)/vendor_ramdisk/modules.load))
+#BOARD_VENDOR_KERNEL_MODULES_LOAD := $(strip $(shell cat $(KERNEL_MODULE_DIR)/vendor_dlkm/modules.load))
+
+BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD := $(strip $(shell cat $(KERNEL_MODULE_DIR)/vendor_boot.modules.load))
+ifndef BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD
+$(error vendor_boot.modules.load not found or empty)
+endif
+BOARD_VENDOR_RAMDISK_KERNEL_MODULES := $(addprefix $(KERNEL_MODULE_DIR)/, $(notdir $(BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD)))
+
+BOARD_VENDOR_KERNEL_MODULES_LOAD := $(strip $(shell cat $(KERNEL_MODULE_DIR)/modules.load))
+ifndef BOARD_VENDOR_KERNEL_MODULES_LOAD
+$(error vendor_dlkm.modules.load not found or empty)
+endif
 
 # Recovery module load list
-BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES_LOAD := $(strip $(shell cat $(KERNEL_MODULE_DIR)/vendor_ramdisk/modules.load.recovery))
-RECOVERY_MODULES := $(addprefix $(KERNEL_MODULE_DIR)/vendor_ramdisk/, $(BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES_LOAD))
+#BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES_LOAD := $(strip $(shell cat $(KERNEL_MODULE_DIR)/vendor_ramdisk/modules.load.recovery))
+#RECOVERY_MODULES := $(addprefix $(KERNEL_MODULE_DIR)/vendor_ramdisk/, $(BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES_LOAD))
 
 # Module definition
 #BOARD_VENDOR_RAMDISK_KERNEL_MODULES := $(addprefix $(KERNEL_MODULE_DIR)/, $(notdir $(BOARD_VENDOR_KERNEL_MODULES_LOAD)))
-BOARD_VENDOR_RAMDISK_KERNEL_MODULES := $(wildcard $(KERNEL_MODULE_DIR)/vendor_ramdisk/*.ko)
-BOARD_VENDOR_KERNEL_MODULES := $(wildcard $(KERNEL_MODULE_DIR)/vendor_dlkm/*.ko)
+#BOARD_VENDOR_RAMDISK_KERNEL_MODULES := $(wildcard $(KERNEL_MODULE_DIR)/vendor_ramdisk/*.ko)
+#BOARD_VENDOR_KERNEL_MODULES := $(wildcard $(KERNEL_MODULE_DIR)/vendor_dlkm/*.ko)
 #BOARD_VENDOR_KERNEL_MODULES := $(addprefix $(KERNEL_MODULE_DIR)/, $(notdir $(BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD)))
+BOARD_VENDOR_RAMDISK_KERNEL_MODULES += $(addprefix $(KERNEL_MODULE_DIR)/, $(notdir $(BOARD_VENDOR_KERNEL_MODULES_LOAD)))
+BOARD_VENDOR_KERNEL_MODULES := $(KERNEL_MODULES)
 
 # Lineage Health
 TARGET_HEALTH_CHARGING_CONTROL_SUPPORTS_BYPASS := false
@@ -187,6 +199,7 @@ TARGET_SYSTEM_EXT_PROP += $(COMMON_PATH)/configs/properties/system_ext.prop
 TARGET_VENDOR_PROP += $(COMMON_PATH)/configs/properties/vendor.prop
 
 # Recovery
+BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES_LOAD := $(strip $(shell cat $(KERNEL_MODULE_DIR)/modules.load.recovery))
 TARGET_RECOVERY_FSTAB := $(COMMON_PATH)/rootdir/etc/recovery/recovery.fstab
 TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
 TARGET_USERIMAGES_USE_EXT4 := true
