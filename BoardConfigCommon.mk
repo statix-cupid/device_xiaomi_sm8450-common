@@ -85,6 +85,7 @@ BOARD_PREBUILT_DTBOIMAGE := $(BOARD_PREBUILT_DTBIMAGE_DIR)/dtbs/dtbo.img
 TARGET_FS_CONFIG_GEN := $(COMMON_PATH)/configs/filesystem/config.fs
 
 # GPS
+TARGET_USES_HARDWARE_QCOM_GPS := false
 BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := default
 $(call soong_config_set, qtilocation, feature_nhz, false)
 
