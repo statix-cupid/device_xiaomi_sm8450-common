@@ -395,6 +395,10 @@ PRODUCT_PACKAGES += \
     libprotobuf-cpp-full-3.9.1-vendorcompat:64 \
     libprotobuf-cpp-lite-3.9.1-vendorcompat:64
 
+# Product
+PRODUCT_USES_QCOM_HARDWARE := true
+PRODUCT_BOARD_PLATFORM := taro
+
 # QMI
 PRODUCT_PACKAGES += \
     libcurl.vendor:64 \
