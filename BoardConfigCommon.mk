@@ -31,14 +31,13 @@ AB_OTA_PARTITIONS += \
 
 # Architecture
 TARGET_ARCH := arm64
-TARGET_ARCH_VARIANT := armv9-a
+TARGET_ARCH_VARIANT := armv8-a-branchprot
 TARGET_CPU_ABI := arm64-v8a
 TARGET_CPU_ABI2 :=
-TARGET_CPU_VARIANT := cortex-a510
+TARGET_CPU_VARIANT := generic
+TARGET_CPU_VARIANT_RUNTIME := kryo300
 
 # Audio
-$(call soong_config_set, android_hardware_audio, run_64bit, true)
-
 AUDIO_FEATURE_ENABLED_DLKM := true
 AUDIO_FEATURE_ENABLED_DTS_EAGLE := false
 AUDIO_FEATURE_ENABLED_GEF_SUPPORT := true
@@ -49,6 +48,7 @@ AUDIO_FEATURE_ENABLED_PROXY_DEVICE := true
 
 BOARD_SUPPORTS_OPENSOURCE_STHAL := true
 
+TARGET_USES_QCOM_AUDIO_AR := true
 TARGET_USES_QCOM_MM_AUDIO := true
 
 # Boot control
@@ -82,9 +82,9 @@ SOONG_CONFIG_dolby_vision_enabled := true
 # DTB/O
 BOARD_INCLUDE_DTB_IN_BOOTIMG := true
 TARGET_NEEDS_DTBOIMAGE := false
-TARGET_PREBUILT_DTB := $(TARGET_KERNEL_DIR)/dtbs/waipio.dtb
-BOARD_PREBUILT_DTBIMAGE_DIR := $(TARGET_KERNEL_DIR)/dtbs
-BOARD_PREBUILT_DTBOIMAGE := $(BOARD_PREBUILT_DTBIMAGE_DIR)/dtbs/dtbo.img
+TARGET_PREBUILT_DTB := device/xiaomi/cupid-kernel/dtbs/waipio.dtb
+BOARD_PREBUILT_DTBIMAGE_DIR := device/xiaomi/cupid-kernel/dtbs
+BOARD_PREBUILT_DTBOIMAGE := device/xiaomi/cupid-kernel/dtbs/dtbo.img
 
 # Filesystem
 TARGET_FS_CONFIG_GEN := $(COMMON_PATH)/configs/filesystem/config.fs
@@ -119,7 +119,7 @@ BOARD_KERNEL_CMDLINE := \
     irqaffinity=0-3 \
     pelt=8 \
     androidboot.selinux=permissive
-    
+
 BOARD_BOOTCONFIG := \
     androidboot.hardware=qcom \
     androidboot.init_fatal_reboot_target=recovery \
@@ -132,7 +132,7 @@ BOARD_BUILD_VENDOR_RAMDISK_IMAGE := true
 BOARD_VENDOR_RAMDISK_FRAGMENTS := dlkm
 BOARD_VENDOR_RAMDISK_FRAGMENT.dlkm.KERNEL_MODULE_DIRS := top
 
-KERNEL_MODULE_DIR := $(TARGET_KERNEL_DIR) # This is set in device-specific
+KERNEL_MODULE_DIR := $(TARGET_KERNEL_DIR)
 
 # Module definition
 BOARD_VENDOR_RAMDISK_KERNEL_MODULES := $(wildcard $(KERNEL_MODULE_DIR)/vendor_ramdisk/*.ko)
@@ -189,6 +189,7 @@ TARGET_VENDOR_PROP += $(COMMON_PATH)/configs/properties/vendor.prop
 
 # Recovery
 TARGET_RECOVERY_FSTAB := $(COMMON_PATH)/rootdir/etc/recovery/recovery.fstab
+BOARD_USES_FULL_RECOVERY_IMAGE := true
 TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true

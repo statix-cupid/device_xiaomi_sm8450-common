@@ -19,7 +19,7 @@ vendor/lib64/libar-acdb.so
 vendor/lib64/libar-gpr.so
 vendor/lib64/libar-gsl.so
 vendor/lib64/libats.so
-vendor/lib64/libaudio_log_utils.so
+-vendor/lib64/libaudio_log_utils.so
 vendor/lib64/libaudiocloudctrl.so
 vendor/lib64/libaudioroute_ext.so
 vendor/lib64/libcapiv2svacnnvendor.so
@@ -36,7 +36,7 @@ vendor/lib64/libqtigefar.so
 vendor/lib64/libresampler.so
 vendor/lib64/libxlog.so
 # vendor.qti.hardware.AGMIPC@1.0-impl depends on libagm, which is decommonized
-vendor/lib64/vendor.qti.hardware.AGMIPC@1.0-impl.so
+-vendor/lib64/vendor.qti.hardware.AGMIPC@1.0-impl.so
 
 # Audio soundfx
 vendor/lib64/soundfx/libasphere.so
@@ -487,7 +487,7 @@ vendor/lib64/libqcodec2_v4l2codec.so
 vendor/lib64/libvideotxr.so
 vendor/lib64/qti.video.utils.videobufferlayout.so
 
-# Media (Dolby Audio) - from nuwa HyperOS 1.0.6.0.UMBMIXM
+# Media (Dolby) - from nuwa HyperOS 1.0.6.0.UMBMIXM
 vendor/bin/hw/vendor.dolby.hardware.dms@2.0-service
 vendor/bin/hw/vendor.dolby.media.c2@1.0-service
 vendor/etc/init/vendor.dolby.hardware.dms@2.0-service.rc
