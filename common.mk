@@ -88,7 +88,6 @@ PRODUCT_PACKAGES += \
     libqcompostprocbundle:64 \
     libqcomvisualizer:64 \
     libqcomvoiceprocessing:64 \
-    libsndcardparser:64 \
     libtinycompress:64 \
     libvolumelistener:64
 
