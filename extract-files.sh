@@ -79,6 +79,9 @@ function blob_fixup() {
         vendor/lib64/c2.dolby.client.so)
             "${PATCHELF}" --add-needed "dolbycodec_shim.so" "${2}"
             ;;
+        vendor/etc/seccomp_policy/c2audio.vendor.ext-arm64.policy)
+            grep -q "setsockopt: 1" "${2}" || echo "setsockopt: 1" >> "${2}"
+            ;;
         vendor/etc/msm_irqbalance.conf)
             sed -i "s/IGNORED_IRQ=27,23,38$/&,115,332/" "${2}"
             ;;
