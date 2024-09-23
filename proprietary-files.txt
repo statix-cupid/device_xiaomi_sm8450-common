@@ -2,7 +2,9 @@
 
 # ADSP
 vendor/bin/adsprpcd
+vendor/bin/audioadsprpcd
 vendor/etc/init/vendor.qti.adsprpc-guestos-service.rc
+vendor/etc/init/vendor.qti.audio-adsprpc-service.rc
 vendor/lib64/libadsp_default_listener.so
 
 # ANT+
@@ -410,6 +412,16 @@ vendor/etc/init/android.hardware.security.keymint-service-qti.rc
 vendor/etc/permissions/android.hardware.hardware_keystore.xml
 vendor/etc/vintf/manifest/android.hardware.security.keymint-service-qti.xml
 vendor/lib64/libqtikeymint.so
+
+# Listen
+vendor/etc/vintf/manifest/manifest_non_qmaa.xml
+vendor/etc/vintf/manifest/manifest_non_qmaa_extn.xml
+vendor/lib64/hw/sound_trigger.primary.taro.so
+vendor/lib64/libeai_fixed.so
+vendor/lib64/libeai_float.so
+vendor/lib64/liblistensoundmodel2vendor.so
+vendor/lib64/vendor.qti.hardware.ListenSoundModel@1.0-impl.so
+vendor/lib64/vendor.qti.hardware.ListenSoundModel@1.0.so
 
 # Media
 vendor/bin/hw/vendor.qti.media.c2@1.0-service
@@ -854,6 +866,7 @@ vendor/lib64/libril-legacy.so
 vendor/lib64/libril-qc-ltedirectdisc.so
 vendor/lib64/libril-qc-radioconfig.so
 vendor/lib64/librilqmimiscservices.so
+vendor/lib64/librmnetctl.so
 vendor/lib64/libshsusr_verinfo.so
 vendor/lib64/libsystem_health_mon.so
 vendor/lib64/libxiaomi_qcril.so

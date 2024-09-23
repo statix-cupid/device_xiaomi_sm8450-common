@@ -60,34 +60,18 @@ PRODUCT_PACKAGES += \
     android.hardware.audio@7.0-impl:64 \
     android.hardware.audio.effect@7.0-impl:64 \
     android.hardware.audio.service \
-    android.hardware.soundtrigger@2.3-impl:64 \
-    vendor.qti.hardware.AGMIPC@1.0-service \
-    vendor.qti.hardware.pal@1.0-impl:64
+    android.hardware.soundtrigger@2.3-impl:64
 
 PRODUCT_PACKAGES += \
     audio.bluetooth.default:64 \
-    audio.primary.taro:64 \
     audio.r_submix.default:64 \
-    audio.usb.default:64 \
-    sound_trigger.primary.taro:64
+    audio.usb.default:64
 
 PRODUCT_PACKAGES += \
-    audioadsprpcd
-
-PRODUCT_PACKAGES += \
-    libagm_compress_plugin:64 \
-    libagm_mixer_plugin:64 \
-    libagm_pcm_plugin:64 \
-    libagmclient:64 \
-    libagmmixer:64 \
     libaudioroute.vendor:64 \
-    libbatterylistener:64 \
-    libfmpal:64 \
-    libpalclient:64 \
     libqcompostprocbundle:64 \
     libqcomvisualizer:64 \
     libqcomvoiceprocessing:64 \
-    libsndcardparser:64 \
     libtinycompress:64 \
     libvolumelistener:64
 
@@ -443,9 +427,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.radio.config@1.3.vendor:64 \
     android.hardware.radio.deprecated@1.0.vendor:64 \
-
-PRODUCT_PACKAGES += \
-    librmnetctl
 
 # Sensors
 PRODUCT_PACKAGES += \
