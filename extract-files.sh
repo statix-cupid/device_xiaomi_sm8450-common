@@ -91,6 +91,9 @@ function blob_fixup() {
         vendor/lib64/vendor.libdpmframework.so)
             "${PATCHELF_0_17_2}" --add-needed "libhidlbase_shim.so" "${2}"
             ;;
+        vendor/lib64/libface3d_dev.so)
+            "${PATCHELF_0_17_2}" --replace-needed "libgui_vendor.so" "libgui.so" "${2}"
+            ;;
     esac
 }
 
