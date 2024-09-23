@@ -521,8 +521,10 @@ vendor/lib64/soundfx/libswvqe.so
 vendor/lib64/vendor.dolby.hardware.dms@2.0-impl.so
 vendor/lib64/vendor.dolby.hardware.dms@2.0.so
 
-# Media (Dolby Vision)
+# Media (dolbycodec2)
 vendor/bin/hw/dolbycodec2|3be3be9e6e7e5a2190238d5ac1116cce63bea781
+
+# Media (Dolby Vision)
 vendor/etc/init/vendor.dolby.media.c2@1.0-service.rc:vendor/etc/init/dolbycodec2.rc
 vendor/lib64/c2.dolby.avc.dec.so
 vendor/lib64/c2.dolby.avc.sec.dec.so
