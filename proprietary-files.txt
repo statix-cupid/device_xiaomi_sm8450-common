@@ -491,6 +491,9 @@ vendor/lib64/soundfx/libswvqe.so
 vendor/lib64/vendor.dolby.hardware.dms@2.0-impl.so
 vendor/lib64/vendor.dolby.hardware.dms@2.0.so
 
+# Media (libc2filterplugin) - from felix AP2A.240905.003
+vendor/lib64/libc2filterplugin.so
+
 # Media (dolbycodec2)
 vendor/bin/hw/dolbycodec2|3be3be9e6e7e5a2190238d5ac1116cce63bea781
 
