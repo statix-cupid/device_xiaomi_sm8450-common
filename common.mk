@@ -65,11 +65,7 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
     libaudioroute.vendor:64 \
-    libqcompostprocbundle:64 \
-    libqcomvisualizer:64 \
-    libqcomvoiceprocessing:64 \
-    libtinycompress:64 \
-    libvolumelistener:64
+    libtinycompress:64
 
 $(foreach sku, taro diwali cape ukee parrot, \
     $(eval PRODUCT_COPY_FILES += \
